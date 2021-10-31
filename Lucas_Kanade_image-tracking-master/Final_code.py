@@ -227,12 +227,8 @@ def Pipeline(start,end):
             tmp_array[0,:]=gray_img[temp_affine[1,:],temp_affine[0,:]]
         #------------------------------------------------------------------
         gray=gray_intensity(template,gray_img)
-        #sobelx,sobely = gradient(gray)
-        #count+=1
         p,new_vtx=affineLKtracker(temp,tmp_array,gray,points,p)
-
         Final = cv2.polylines(image,  np.int32([new_vtx.T]),  1,  (0, 0, 200),  2)
-        #cv2.imshow('rect',rect_img)
         print(count)
         count += 1
         print('Frame processing index')
