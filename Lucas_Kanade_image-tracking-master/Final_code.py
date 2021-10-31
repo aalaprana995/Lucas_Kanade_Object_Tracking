@@ -17,15 +17,18 @@ except:
     pass
 import cv2
 
+# brief:
+# parameters:
+# output:
 def hessian(steepest_descent_matrix):
-    #steepest_descent_matrix_t=np.transpose(steepest_descent_matrix)
     hessian=np.dot(steepest_descent_matrix.T,steepest_descent_matrix)
-    #print(hessian,'hessian')
     return hessian
 
+# brief:
+# parameters:
+# output:
 def delta_p(hessian,steepest_descent_matrix,error):
     non_singular=0
-    #inv_hessian=np.linalg.inv(hessian+non_singular*np.eye(6))
     inv_hessian=np.linalg.pinv(hessian)
     steepest_descent_matrix_t=np.transpose(steepest_descent_matrix)
     SD=np.dot(steepest_descent_matrix.T,error.T)
@@ -33,16 +36,25 @@ def delta_p(hessian,steepest_descent_matrix,error):
     return delta_p
 
 
+# brief:
+# parameters:
+# output:
 def gradient(image):
     gray=image
     sobelx = cv2.Sobel(gray,cv2.CV_64F,1,0,ksize=3)
     sobely = cv2.Sobel(gray,cv2.CV_64F,0,1,ksize=3)
     return sobelx,sobely
 
+# brief:
+# parameters:
+# output:
 def affine(m,points):
     points_result=np.dot(m,points.T)
     return points_result.T
 
+# brief:
+# parameters:
+# output:
 def convert_lab(image):
    clahe = cv2.createCLAHE(clipLimit=1., tileGridSize=(1,1))
    lab = cv2.cvtColor(image, cv2.COLOR_BGR2LAB)
@@ -52,6 +64,9 @@ def convert_lab(image):
    img2 = cv2.cvtColor(lab, cv2.COLOR_LAB2BGR)
    return img2
 
+# brief:
+# parameters:
+# output:
 def point_matrix(points):
     a=(points[1,0]-points[0,0])+1
     b=(points[1,1]-points[0,1])+1
@@ -70,6 +85,9 @@ def point_matrix(points):
     #print()
     return matrix
 
+# brief:
+# parameters:
+# output:
 def error_calculate(template,image,points,pts_img):
     grayImage=image
     shape=points.shape[0]
@@ -84,6 +102,9 @@ def error_calculate(template,image,points,pts_img):
         #print(error,'error')
     return error
 
+# brief:
+# parameters:
+# output:
 def affine_new(T_x_coordinates,p,points):
     x1,x2=points[0,0],points[1,0]
     y1,y2=points[0,1],points[1,1]
@@ -99,6 +120,9 @@ def affine_new(T_x_coordinates,p,points):
     new_pts=(np.dot(affine_mat,T_x_coordinates)).astype(int)
     return new_pts,new_vtx
 
+# brief:
+# parameters:
+# output:
 def descent(sobelx,sobely,affine_coords,temp):
     sobelx_arr=img_intent.copy()
     sobely_arr=img_intent.copy()
@@ -111,6 +135,9 @@ def descent(sobelx,sobely,affine_coords,temp):
     descent_img=np.vstack((img1,img2,img3,img4, sobelx_arr, sobely_arr)).T
     return descent_img
 
+# brief:
+# parameters:
+# output:
 def affineLKtracker(temp,tmp_array,gray,points,p):
     diff=2
     img_x,img_y=gradient(gray)
@@ -121,25 +148,21 @@ def affineLKtracker(temp,tmp_array,gray,points,p):
         print(p)
         print(diff)
         new_pts,new_vtx=affine_new(temp,p,points)
-        #pts_img=affine(m,points)
-        #print(pts_img)
         #Step 1
         new_img = img_intent.copy()
-        #img_x_array = np.zeros((1,new_pts.shape[1]))
-        #img_y_array = np.zeros((1,new_pts.shape[1]))
-
         new_img[0,:]=gray[new_pts[1,:],new_pts[0,:]]
         error=tmp_array-new_img
         descent_img=descent(img_x,img_y,new_pts,temp)
-
         hessian_mat=hessian(descent_img)
         deltap=delta_p(hessian_mat,descent_img,error)
-
         diff=np.linalg.norm(deltap)
         p = np.reshape(p,(6,1))
         p = p+deltap
     return p,new_vtx
 
+# brief:
+# parameters:
+# output:
 def gray_intensity(template,image):
     #gray=cv2.cvtColor(image.copy(),cv2.COLOR_BGR2GRAY)
     T_mean=np.mean(template)
@@ -168,6 +191,9 @@ def human(i):
         image=cv2.imread('data/human/0%d.jpg'%i)
     return image,140,341
 
+# brief:
+# parameters:
+# output:
 def Pipeline(start,end):
     vidObj = cv2.VideoCapture()
     count=0
@@ -185,7 +211,6 @@ def Pipeline(start,end):
         height,width,layers=image.shape
         size = (width,height)
         gray_img=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
-        #image_mean=np.mean(gray_img)
         #-----------------------------------------------------------------
         if count==0:
             #temp_mean=image_mean
