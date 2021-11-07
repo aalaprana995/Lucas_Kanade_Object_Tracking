@@ -13,6 +13,7 @@ The main goal of the template based tracking using Lucas Kanade Method is to fin
 - Pick all pixel from the template image T(x) and warp them using the function "W(x,p)", where p are the parameters of the Affine transformation.
 ![Screenshot from 2021-11-07 11-30-10](https://user-images.githubusercontent.com/93336207/140653460-6b0718c2-d446-4796-80ff-e71b951cea4c.png)
 **Jacobian**
+Vector form of partial differentiation.
 ## Mathematics and Calculations
 To solve the Lucas Kanade Algorithm for object tracking the Sum of Squared Equation "E" needs to be minimized.
 ![Screenshot from 2021-11-07 11-40-14](https://user-images.githubusercontent.com/93336207/140653789-d07583f1-2a5c-4629-b594-80c6da7f6e16.png)\
@@ -31,3 +32,16 @@ For minimizing "E" we would be using Gauss-Newton Method:
 ![Screenshot from 2021-11-07 11-59-47](https://user-images.githubusercontent.com/93336207/140654390-72419272-3225-40c1-baff-48cff5888513.png)
 ![Screenshot from 2021-11-07 12-01-15](https://user-images.githubusercontent.com/93336207/140654426-d28e82d8-8a30-4611-9240-72b120bcf887.png)
 ## Algorithm
+![Screenshot from 2021-11-07 12-48-52](https://user-images.githubusercontent.com/93336207/140659763-54175aa8-b32d-46c4-932c-9080c7f07da7.png)
+![Screenshot from 2021-11-07 12-48-59](https://user-images.githubusercontent.com/93336207/140659778-927a3579-f682-48b9-a072-3501f95bf69e.png)
+![Screenshot from 2021-11-07 12-49-07](https://user-images.githubusercontent.com/93336207/140659810-94256cc4-99bc-4f91-b0fe-fe3cee240f96.png)
+![Screenshot from 2021-11-07 12-49-15](https://user-images.githubusercontent.com/93336207/140659840-cde7dc86-68bf-479e-845b-bd7d0b14edb9.png)
+![Screenshot from 2021-11-07 12-49-20](https://user-images.githubusercontent.com/93336207/140659862-6a008edc-4c9b-4bf1-9b75-7bf7ae46c040.png)
+![Screenshot from 2021-11-07 12-49-29](https://user-images.githubusercontent.com/93336207/140659890-9607e7e8-de17-4ff5-b715-d35ad9de7e32.png)
+
+
+
+
+
+
+
