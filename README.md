@@ -20,6 +20,7 @@ To solve the Lucas Kanade Algorithm for object tracking the Sum of Squared Equat
 For minimizing "E" we would be using Gauss-Newton Method:
 - Apply a first order approximation of the warp. 
 - Minimize the function iteratively until a threshold is reached.
+
 **Steps**
 - Assume that we know the initial estimate of "p".Thus, we need to find &#916; p that minimizes 
 ![Screenshot from 2021-11-07 11-40-14](https://user-images.githubusercontent.com/93336207/140653789-d07583f1-2a5c-4629-b594-80c6da7f6e16.png)
