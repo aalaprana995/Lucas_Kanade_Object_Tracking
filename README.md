@@ -32,6 +32,9 @@ For minimizing "E" we would be using Gauss-Newton Method:
 ![Screenshot from 2021-11-07 11-57-54](https://user-images.githubusercontent.com/93336207/140654306-c844d1d5-0f28-4869-bbee-9e945d06a038.png)
 ![Screenshot from 2021-11-07 11-59-47](https://user-images.githubusercontent.com/93336207/140654390-72419272-3225-40c1-baff-48cff5888513.png)
 ![Screenshot from 2021-11-07 12-01-15](https://user-images.githubusercontent.com/93336207/140654426-d28e82d8-8a30-4611-9240-72b120bcf887.png)
+![Screenshot from 2021-11-10 16-32-57](https://user-images.githubusercontent.com/93336207/141197052-11e130c5-a84a-49c0-8505-ed2246e848bf.png)
+
+
 ## Algorithm
 **Step1** \
 Select a template. Warp image I(x) with W(x, p) to form a warped image with parameter "p" let it be I(W(x,p)).\
