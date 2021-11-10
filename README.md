@@ -15,7 +15,7 @@ The main goal of the template based tracking using Lucas Kanade Method is to fin
 **Jacobian**
 Vector form of partial differentiation.
 ## Mathematics and Calculations
-To solve the Lucas Kanade Algorithm for object tracking the Sum of Squared Equation "E" needs to be minimized.
+To solve the Lucas Kanade Algorithm for object tracking the Sum of Squared Difference Equation "E" needs to be minimized.
 ![Screenshot from 2021-11-07 11-40-14](https://user-images.githubusercontent.com/93336207/140653789-d07583f1-2a5c-4629-b594-80c6da7f6e16.png)\
 For minimizing "E" we would be using Gauss-Newton Method:
 - Apply a first order approximation of the warp. 
